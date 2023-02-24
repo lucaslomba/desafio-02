@@ -28,6 +28,17 @@ interface CardCoffeeProps {
 export function CardCoffe({ coffee }: CardCoffeeProps) {
   const [countCoffeToAdd, setCountCoffeToAdd] = useState(0)
 
+  function handleCountCoffeAdd(action: string) {
+    const newValueCount =
+      action === 'add' ? countCoffeToAdd + 1 : countCoffeToAdd - 1
+
+    if (newValueCount < 0) {
+      return false
+    }
+
+    setCountCoffeToAdd(newValueCount)
+  }
+
   return (
     <CardCoffeContainer>
       <img src={CoffeImage} alt="Café expresso tradicional" />
@@ -53,11 +64,11 @@ export function CardCoffe({ coffee }: CardCoffeeProps) {
 
         <div>
           <span>
-            <button onClick={() => setCountCoffeToAdd(countCoffeToAdd - 1)}>
+            <button onClick={() => handleCountCoffeAdd('rmv')}>
               <Minus size={14} weight="fill" />
             </button>
             {countCoffeToAdd}
-            <button onClick={() => setCountCoffeToAdd(countCoffeToAdd + 1)}>
+            <button onClick={() => handleCountCoffeAdd('add')}>
               <Plus size={14} weight="fill" />
             </button>
           </span>
