@@ -7,13 +7,15 @@ import { NavLink } from 'react-router-dom'
 export function Header() {
   return (
     <HeaderContainer>
-      <img src={Logo} alt="" />
+      <NavLink to="/" title="Home">
+        <img src={Logo} alt="" />
+      </NavLink>
 
       <nav>
         <span>
           <MapPin size={22} weight="fill" /> Atibaia, SP
         </span>
-        <NavLink to="/checkout" title="checkout">
+        <NavLink to="/checkout" title="Checkout">
           <ShoppingCart size={22} weight="fill" />
         </NavLink>
       </nav>
