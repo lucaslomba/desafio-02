@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const HomeContainer = styled.div``
 
 export const HomeStartContainer = styled.div`
-  height: calc(100vh - 10rem);
+  height: calc(100vh - 6.7rem);
 
   display: flex;
   justify-content: space-between;
@@ -12,7 +12,7 @@ export const HomeStartContainer = styled.div`
   background-image: url(http://localhost:5173/src/assets/BackgroundContainer.png);
   background-size: cover;
 
-  padding: 2rem 10rem 2rem 10rem;
+  padding: 0 10rem 0 10rem;
 `
 
 export const ContentContainer = styled.div`
@@ -84,4 +84,24 @@ export const BeneficiosItemGridRoxo = styled(BeneficiosItemGrid)`
   div {
     background: ${(props) => props.theme['purple-500']};
   }
+`
+
+export const HomeOptionsContainer = styled.div`
+  padding: 0 10rem 0 10rem;
+
+  h2 {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 2rem;
+  }
+
+  margin-bottom: 4rem;
+`
+
+export const OptionsGrid = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  display: grid;
+  grid-template-columns: 23% 23% 23% 23%;
 `

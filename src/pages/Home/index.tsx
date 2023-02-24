@@ -1,6 +1,8 @@
 import {
   HomeContainer,
   HomeStartContainer,
+  HomeOptionsContainer,
+  OptionsGrid,
   BeneficiosContainerGrid,
   BeneficiosItemGridLaranja,
   BeneficiosItemGridPreto,
@@ -11,6 +13,7 @@ import {
 
 import { ShoppingCart, Timer, Package, Coffee } from 'phosphor-react'
 import Background from '../../assets/Background.svg'
+import { CardCoffe } from './components/CardCoffe'
 
 export function Home() {
   return (
@@ -58,6 +61,25 @@ export function Home() {
           />
         </div>
       </HomeStartContainer>
+      <HomeOptionsContainer>
+        <h2>Nossos cafés</h2>
+        <OptionsGrid>
+          <CardCoffe />
+          <CardCoffe />
+          <CardCoffe />
+          <CardCoffe />
+          <CardCoffe />
+          <CardCoffe />
+          <CardCoffe />
+          <CardCoffe />
+          <CardCoffe />
+          <CardCoffe />
+          <CardCoffe />
+          <CardCoffe />
+          <CardCoffe />
+          <CardCoffe />
+        </OptionsGrid>
+      </HomeOptionsContainer>
     </HomeContainer>
   )
 }
