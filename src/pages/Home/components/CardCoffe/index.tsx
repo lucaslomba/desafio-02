@@ -16,6 +16,7 @@ import { useState } from 'react'
 interface CardCoffeeProps {
   coffee: {
     id: number
+    image: string
     categorys: {
       category: string
     }[]
@@ -27,6 +28,8 @@ interface CardCoffeeProps {
 
 export function CardCoffe({ coffee }: CardCoffeeProps) {
   const [countCoffeToAdd, setCountCoffeToAdd] = useState(0)
+
+  const urlImage = '../../../../src/assets/tiposCafe/'
 
   function handleCountCoffeAdd(action: string) {
     const newValueCount =
@@ -41,7 +44,7 @@ export function CardCoffe({ coffee }: CardCoffeeProps) {
 
   return (
     <CardCoffeContainer>
-      <img src={CoffeImage} alt="Café expresso tradicional" />
+      <img src={urlImage + coffee.image} alt="Café expresso tradicional" />
 
       <CardCoffeTypesContainer>
         {coffee.categorys.map((category) => {

@@ -1,6 +1,7 @@
 export const typesOfCoffe = [
   {
     id: 1,
+    image: 'expressoTradicional.svg',
     categorys: [
       {
         category: 'Tradicional',
@@ -12,6 +13,7 @@ export const typesOfCoffe = [
   },
   {
     id: 2,
+    image: 'expressoAmericano.svg',
     categorys: [
       {
         category: 'Tradicional',
@@ -23,6 +25,7 @@ export const typesOfCoffe = [
   },
   {
     id: 3,
+    image: 'expressoCremoso.svg',
     categorys: [
       {
         category: 'Tradicional',
@@ -34,6 +37,7 @@ export const typesOfCoffe = [
   },
   {
     id: 4,
+    image: 'expressoGelado.svg',
     categorys: [
       {
         category: 'Tradicional',
@@ -48,6 +52,7 @@ export const typesOfCoffe = [
   },
   {
     id: 5,
+    image: 'coffeeWithMilk.svg',
     categorys: [
       {
         category: 'Tradicional',
@@ -62,6 +67,7 @@ export const typesOfCoffe = [
   },
   {
     id: 6,
+    image: 'Latte.svg',
     categorys: [
       {
         category: 'Tradicional',
@@ -76,6 +82,7 @@ export const typesOfCoffe = [
   },
   {
     id: 7,
+    image: 'Capuccino.svg',
     categorys: [
       {
         category: 'Tradicional',
@@ -90,6 +97,7 @@ export const typesOfCoffe = [
   },
   {
     id: 8,
+    image: 'Macchiato.svg',
     categorys: [
       {
         category: 'Tradicional',
@@ -104,6 +112,7 @@ export const typesOfCoffe = [
   },
   {
     id: 9,
+    image: 'Mocaccino.svg',
     categorys: [
       {
         category: 'Tradicional',
@@ -118,6 +127,7 @@ export const typesOfCoffe = [
   },
   {
     id: 10,
+    image: 'HotChocolate.svg',
     categorys: [
       {
         category: 'Especial',
@@ -132,6 +142,7 @@ export const typesOfCoffe = [
   },
   {
     id: 11,
+    image: 'Cubano.svg',
     categorys: [
       {
         category: 'especial',
@@ -149,6 +160,7 @@ export const typesOfCoffe = [
   },
   {
     id: 12,
+    image: 'Havaiano.svg',
     categorys: [
       {
         category: 'especial',
@@ -160,6 +172,7 @@ export const typesOfCoffe = [
   },
   {
     id: 13,
+    image: 'Arabe.svg',
     categorys: [
       {
         category: 'especial',
@@ -171,6 +184,7 @@ export const typesOfCoffe = [
   },
   {
     id: 14,
+    image: 'Irlandes.svg',
     categorys: [
       {
         category: 'especial',
