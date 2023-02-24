@@ -24,6 +24,7 @@ export const CardCoffeType = styled.span`
   background: ${(props) => props.theme['yellow-100']};
   color: ${(props) => props.theme['yellow-900']};
   font-weight: bold;
+  text-transform: uppercase;
 
   border-radius: 100px;
   padding: 0.2rem 0.7rem;

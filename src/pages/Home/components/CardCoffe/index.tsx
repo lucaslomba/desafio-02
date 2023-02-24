@@ -12,24 +12,34 @@ import CoffeImage from '../../../../assets/tiposCafe/expressoTradicional.svg'
 import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
 
-export function CardCoffe() {
+interface CardCoffeeProps {
+  coffee: {
+    id: number
+    categorys: {
+      category: string
+    }[]
+    title: string
+    subtitle: string
+    price: number
+  }
+}
+
+export function CardCoffe({ coffee }: CardCoffeeProps) {
   const [countCoffeToAdd, setCountCoffeToAdd] = useState(0)
 
   return (
     <CardCoffeContainer>
       <img src={CoffeImage} alt="Café expresso tradicional" />
 
-      <CardCoffeType>Tradicional</CardCoffeType>
+      <CardCoffeType>{coffee.categorys[0].category}</CardCoffeType>
 
-      <CardCoffeTitle>Expresso Tradicional</CardCoffeTitle>
+      <CardCoffeTitle>{coffee.title}</CardCoffeTitle>
 
-      <CardCoffeSubtitle>
-        O tradicional café feito com água quente e grãos moídos
-      </CardCoffeSubtitle>
+      <CardCoffeSubtitle>{coffee.subtitle}</CardCoffeSubtitle>
 
       <FooterContainer>
         <CardCoffePrice>
-          <span>R$</span> 9,90
+          <span>R$</span> {coffee.price}
         </CardCoffePrice>
 
         <div>

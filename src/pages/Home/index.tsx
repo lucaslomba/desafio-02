@@ -14,6 +14,7 @@ import {
 import { ShoppingCart, Timer, Package, Coffee } from 'phosphor-react'
 import Background from '../../assets/Background.svg'
 import { CardCoffe } from './components/CardCoffe'
+import { typesOfCoffe } from '../../Data/typesOfCoffe'
 
 export function Home() {
   return (
@@ -64,20 +65,9 @@ export function Home() {
       <HomeOptionsContainer>
         <h2>Nossos cafés</h2>
         <OptionsGrid>
-          <CardCoffe />
-          <CardCoffe />
-          <CardCoffe />
-          <CardCoffe />
-          <CardCoffe />
-          <CardCoffe />
-          <CardCoffe />
-          <CardCoffe />
-          <CardCoffe />
-          <CardCoffe />
-          <CardCoffe />
-          <CardCoffe />
-          <CardCoffe />
-          <CardCoffe />
+          {typesOfCoffe.map((coffee) => {
+            return <CardCoffe key={coffee.id} coffee={coffee} />
+          })}
         </OptionsGrid>
       </HomeOptionsContainer>
     </HomeContainer>
