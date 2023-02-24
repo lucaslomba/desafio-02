@@ -25,6 +25,8 @@ export const CardCoffeType = styled.span`
   color: ${(props) => props.theme['yellow-900']};
   font-weight: bold;
   text-transform: uppercase;
+  font-size: 0.625rem;
+  margin: 0.2rem;
 
   border-radius: 100px;
   padding: 0.2rem 0.7rem;
@@ -104,4 +106,8 @@ export const CardCoffePrice = styled.span`
     font-size: 0.875rem;
     font-weight: normal;
   }
+`
+
+export const CardCoffeTypesContainer = styled.div`
+  display: flex;
 `

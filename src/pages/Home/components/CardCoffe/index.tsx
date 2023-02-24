@@ -5,6 +5,7 @@ import {
   CardCoffeSubtitle,
   FooterContainer,
   CardCoffePrice,
+  CardCoffeTypesContainer,
 } from './styles'
 
 import { ShoppingCart, Plus, Minus } from 'phosphor-react'
@@ -31,7 +32,15 @@ export function CardCoffe({ coffee }: CardCoffeeProps) {
     <CardCoffeContainer>
       <img src={CoffeImage} alt="Café expresso tradicional" />
 
-      <CardCoffeType>{coffee.categorys[0].category}</CardCoffeType>
+      <CardCoffeTypesContainer>
+        {coffee.categorys.map((category) => {
+          return (
+            <CardCoffeType key={Math.random()}>
+              {category.category}
+            </CardCoffeType>
+          )
+        })}
+      </CardCoffeTypesContainer>
 
       <CardCoffeTitle>{coffee.title}</CardCoffeTitle>
 
@@ -39,7 +48,7 @@ export function CardCoffe({ coffee }: CardCoffeeProps) {
 
       <FooterContainer>
         <CardCoffePrice>
-          <span>R$</span> {coffee.price}
+          <span>R$</span> {coffee.price.toFixed(2).toString().replace('.', ',')}
         </CardCoffePrice>
 
         <div>
