@@ -123,10 +123,48 @@ export const Button = styled.button`
 `
 
 export const CardSelecteds = styled.div`
-  margin-top: 1rem;
   background: ${(props) => props.theme['gray-200']};
 
+  margin-top: 1rem;
   padding: 2.5rem;
 
   border-radius: 4px 44px 4px 44px;
+`
+
+export const ButtonConfirm = styled.button`
+  width: 100%;
+
+  margin-top: 1.5rem;
+  margin: bottom: 2.5rem;
+
+  background-color: ${(props) => props.theme['yellow-500']};
+  color: ${(props) => props.theme.white};
+  font-weight: bold;
+
+  padding: 0.75rem;
+
+  border: none;
+  border-radius: 6px;
+
+  cursor: pointer;
+`
+
+export const ResumeContainerGrid = styled.div`
+  display: grid;
+  grid-template-columns: auto;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0.75rem 0 0.75rem 0;
+
+    color: ${(props) => props.theme['gray-700']};
+  }
+`
+
+export const ResumeTotal = styled.span`
+  font-size: 1.25rem;
+  color: ${(props) => props.theme['gray-800']};
+  font-weight: bold;
 `

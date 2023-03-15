@@ -1,4 +1,14 @@
 import {
+  MapPinLine,
+  CurrencyDollar,
+  CreditCard,
+  Money,
+  Bank,
+} from 'phosphor-react'
+import { useState } from 'react'
+import { CardCoffeSelected } from './components/CardCoffeSelected'
+
+import {
   CheckoutContainer,
   Card,
   CardHeaderContainer,
@@ -12,16 +22,10 @@ import {
   CardMethodPayment,
   Button,
   CardSelecteds,
+  ButtonConfirm,
+  ResumeContainerGrid,
+  ResumeTotal,
 } from './styles'
-
-import {
-  MapPinLine,
-  CurrencyDollar,
-  CreditCard,
-  Money,
-  Bank,
-} from 'phosphor-react'
-import { useState } from 'react'
 
 export function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState('')
@@ -98,7 +102,27 @@ export function Checkout() {
       </div>
       <div>
         <h2>Cafés selecionados</h2>
-        <CardSelecteds>Batata</CardSelecteds>
+        <CardSelecteds>
+          <CardCoffeSelected />
+          <CardCoffeSelected />
+
+          <ResumeContainerGrid>
+            <div>
+              <span>Total de itens</span>
+              <span>R$ 29,70</span>
+            </div>
+            <div>
+              <span>Entrega</span>
+              <span>R$ 3,50</span>
+            </div>
+            <div>
+              <ResumeTotal>Total</ResumeTotal>
+              <ResumeTotal>R$ 33,20</ResumeTotal>
+            </div>
+          </ResumeContainerGrid>
+
+          <ButtonConfirm>CONFIRMAR PEDIDO</ButtonConfirm>
+        </CardSelecteds>
       </div>
     </CheckoutContainer>
   )

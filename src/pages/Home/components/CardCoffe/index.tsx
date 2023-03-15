@@ -44,7 +44,7 @@ export function CardCoffe({ coffee }: CardCoffeeProps) {
 
   return (
     <CardCoffeContainer>
-      <img src={urlImage + coffee.image} alt="Café expresso tradicional" />
+      <img src={urlImage + coffee.image} alt={coffee.title} />
 
       <CardCoffeTypesContainer>
         {coffee.categorys.map((category) => {
