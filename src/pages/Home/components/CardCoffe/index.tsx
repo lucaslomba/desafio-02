@@ -9,9 +9,9 @@ import {
 } from './styles'
 
 import { ShoppingCart, Plus, Minus } from 'phosphor-react'
-import CoffeImage from '../../../../assets/tiposCafe/expressoTradicional.svg'
 import { NavLink } from 'react-router-dom'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { CartContext } from '../../../../contexts/CartContext'
 
 interface CardCoffeeProps {
   coffee: {
@@ -27,6 +27,7 @@ interface CardCoffeeProps {
 }
 
 export function CardCoffe({ coffee }: CardCoffeeProps) {
+  const { addItemToCart } = useContext(CartContext)
   const [countCoffeToAdd, setCountCoffeToAdd] = useState(0)
 
   const urlImage = '../../../../src/assets/tiposCafe/'
@@ -40,6 +41,15 @@ export function CardCoffe({ coffee }: CardCoffeeProps) {
     }
 
     setCountCoffeToAdd(newValueCount)
+
+    const data = {
+      coffeeId: coffee.id,
+      quantity: newValueCount,
+      unityPrice: coffee.price,
+      totalPrice: coffee.price * newValueCount,
+    }
+
+    addItemToCart(data)
   }
 
   return (
