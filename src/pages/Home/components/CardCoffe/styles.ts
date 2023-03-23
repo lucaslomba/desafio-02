@@ -61,18 +61,6 @@ export const FooterContainer = styled.div`
     display: flex;
     gap: 0.5rem;
 
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: ${(props) => props.theme['purple-500']};
-      color: ${(props) => props.theme.white};
-
-      padding: 0.5rem;
-      border-radius: 6px;
-    }
-
     span {
       background: ${(props) => props.theme['gray-400']};
 
@@ -110,4 +98,20 @@ export const CardCoffePrice = styled.span`
 
 export const CardCoffeTypesContainer = styled.div`
   display: flex;
+`
+
+export const ButtonAdd = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: ${(props) => props.theme['purple-500']};
+  color: ${(props) => props.theme.white};
+
+  padding: 0.5rem;
+
+  border: none;
+  border-radius: 6px;
+
+  cursor: pointer;
 `

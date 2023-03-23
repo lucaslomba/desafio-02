@@ -5,7 +5,8 @@ import {
   Money,
   Bank,
 } from 'phosphor-react'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { CartContext } from '../../contexts/CartContext'
 import { CardCoffeSelected } from './components/CardCoffeSelected'
 
 import {
@@ -28,6 +29,7 @@ import {
 } from './styles'
 
 export function Checkout() {
+  const { cart } = useContext(CartContext)
   const [paymentMethod, setPaymentMethod] = useState('')
 
   return (
@@ -103,8 +105,17 @@ export function Checkout() {
       <div>
         <h2>Cafés selecionados</h2>
         <CardSelecteds>
-          <CardCoffeSelected />
-          <CardCoffeSelected />
+          {cart.map((cart) =>
+            cart.quantity > 0 ? (
+              <CardCoffeSelected
+                key={cart.coffeeId}
+                coffeeId={cart.coffeeId}
+                quantity={cart.quantity}
+              />
+            ) : (
+              <></>
+            ),
+          )}
 
           <ResumeContainerGrid>
             <div>

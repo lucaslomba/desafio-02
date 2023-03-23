@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { typesOfCoffe } from '../../../../Data/typesOfCoffe'
 
 import { Minus, Plus, Trash } from 'phosphor-react'
 
@@ -9,9 +10,24 @@ import {
   FooterContainer,
   ButtonRemoveToCart,
 } from './styles'
+import { CartContext } from '../../../../contexts/CartContext'
 
-export function CardCoffeSelected() {
-  const [countCoffeToAdd, setCountCoffeToAdd] = useState(1)
+interface CardCoffeSelectedProps {
+  coffeeId: number
+  quantity: number
+}
+
+export function CardCoffeSelected({
+  coffeeId,
+  quantity,
+}: CardCoffeSelectedProps) {
+  const { editQuantityInCart, deleteItemCart } = useContext(CartContext)
+  const urlImage = '../../../../src/assets/tiposCafe/'
+
+  const [countCoffeToAdd, setCountCoffeToAdd] = useState(quantity)
+  const dataSelectedCoffee = typesOfCoffe.filter(
+    (coffee) => coffee.id === coffeeId,
+  )
 
   function handleCountCoffeAdd(action: string) {
     const newValueCount =
@@ -22,13 +38,28 @@ export function CardCoffeSelected() {
     }
 
     setCountCoffeToAdd(newValueCount)
+
+    const data = {
+      coffeeId: dataSelectedCoffee[0].id,
+      quantity: newValueCount,
+      unityPrice: dataSelectedCoffee[0].price,
+      totalPrice: dataSelectedCoffee[0].price * newValueCount,
+    }
+
+    editQuantityInCart(data)
+  }
+
+  function handleDeleteItemCart() {
+    const coffeeId = dataSelectedCoffee[0].id
+
+    deleteItemCart(coffeeId)
   }
 
   return (
     <CardCoffeeContainer>
-      <img src="../../../../src/assets/tiposCafe/Arabe.svg" alt="Café Árabe" />
+      <img src={urlImage + dataSelectedCoffee[0].image} alt="Café Árabe" />
       <CardCoffeeDetails>
-        <span>Expresso Tradicional</span>
+        <span>{dataSelectedCoffee[0].title}</span>
         <FooterContainer>
           <div>
             <span>
@@ -41,7 +72,7 @@ export function CardCoffeSelected() {
               </button>
             </span>
 
-            <ButtonRemoveToCart>
+            <ButtonRemoveToCart onClick={handleDeleteItemCart}>
               <Trash size={14} weight="fill" />
               <span>REMOVER</span>
             </ButtonRemoveToCart>
@@ -49,7 +80,9 @@ export function CardCoffeSelected() {
         </FooterContainer>
       </CardCoffeeDetails>
 
-      <CardCoffeePrice>R$ 9,99</CardCoffeePrice>
+      <CardCoffeePrice>
+        R$ {dataSelectedCoffee[0].price.toFixed(2).toString().replace('.', ',')}
+      </CardCoffeePrice>
     </CardCoffeeContainer>
   )
 }

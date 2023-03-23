@@ -22,7 +22,30 @@ export function cartReducer(state: CartState, action: any) {
 
       return produce(state, (draft) => {
         cartItemIndex >= 0
+          ? (draft.cart[cartItemIndex].quantity =
+              draft.cart[cartItemIndex].quantity + action.payload.cart.quantity)
+          : draft.cart.push(action.payload.cart)
+      })
+    }
+    case ActionTypes.UPDATE_QUANTITY_CART: {
+      const cartItemIndex = state.cart.findIndex((cart) => {
+        return cart.coffeeId === action.payload.cart.coffeeId
+      })
+
+      return produce(state, (draft) => {
+        cartItemIndex >= 0
           ? (draft.cart[cartItemIndex] = action.payload.cart)
+          : draft.cart.push(action.payload.cart)
+      })
+    }
+    case ActionTypes.DELETE_ITEM_CART: {
+      const cartItemIndex = state.cart.findIndex((cart) => {
+        return cart.coffeeId === action.payload.id
+      })
+
+      return produce(state, (draft) => {
+        cartItemIndex >= 0
+          ? (draft.cart[cartItemIndex].quantity = 0)
           : draft.cart.push(action.payload.cart)
       })
     }

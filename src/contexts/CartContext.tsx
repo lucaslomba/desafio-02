@@ -1,10 +1,16 @@
 import { createContext, ReactNode, useEffect, useReducer } from 'react'
-import { updateCart } from '../reducers/Cart/actions'
+import {
+  deleteItemToCart,
+  updateCart,
+  updateQuantityCart,
+} from '../reducers/Cart/actions'
 import { CartItem, cartReducer } from '../reducers/Cart/reducer'
 
 interface CartContextType {
   cart: CartItem[]
   addItemToCart: (data: CartItem) => void
+  editQuantityInCart: (data: CartItem) => void
+  deleteItemCart: (id: number) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -35,8 +41,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   useEffect(() => {
     const stateJSON = JSON.stringify(cartState)
 
-    console.log(stateJSON)
-
     localStorage.setItem('@iginite-coffee-delivery:cart-state-2.0.0', stateJSON)
   }, [cartState])
 
@@ -44,8 +48,18 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(updateCart(data))
   }
 
+  function editQuantityInCart(data: CartItem) {
+    dispatch(updateQuantityCart(data))
+  }
+
+  function deleteItemCart(id: number) {
+    dispatch(deleteItemToCart(id))
+  }
+
   return (
-    <CartContext.Provider value={{ cart, addItemToCart }}>
+    <CartContext.Provider
+      value={{ cart, addItemToCart, editQuantityInCart, deleteItemCart }}
+    >
       {children}
     </CartContext.Provider>
   )

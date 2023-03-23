@@ -6,6 +6,7 @@ import {
   FooterContainer,
   CardCoffePrice,
   CardCoffeTypesContainer,
+  ButtonAdd,
 } from './styles'
 
 import { ShoppingCart, Plus, Minus } from 'phosphor-react'
@@ -41,15 +42,19 @@ export function CardCoffe({ coffee }: CardCoffeeProps) {
     }
 
     setCountCoffeToAdd(newValueCount)
+  }
 
+  function handleAddItemsToCart() {
     const data = {
       coffeeId: coffee.id,
-      quantity: newValueCount,
+      quantity: countCoffeToAdd,
       unityPrice: coffee.price,
-      totalPrice: coffee.price * newValueCount,
+      totalPrice: coffee.price * countCoffeToAdd,
     }
 
     addItemToCart(data)
+
+    setCountCoffeToAdd(0)
   }
 
   return (
@@ -86,9 +91,9 @@ export function CardCoffe({ coffee }: CardCoffeeProps) {
             </button>
           </span>
 
-          <NavLink to="/checkout" title="checkout">
+          <ButtonAdd onClick={handleAddItemsToCart}>
             <ShoppingCart size={22} weight="fill" />
-          </NavLink>
+          </ButtonAdd>
         </div>
       </FooterContainer>
     </CardCoffeContainer>
