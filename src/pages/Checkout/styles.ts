@@ -129,24 +129,29 @@ export const CardSelecteds = styled.div`
   padding: 2.5rem;
 
   border-radius: 4px 44px 4px 44px;
-`
 
-export const ButtonConfirm = styled.button`
-  width: 100%;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    text-decoration: none;
 
-  margin-top: 1.5rem;
-  margin: bottom: 2.5rem;
-
-  background-color: ${(props) => props.theme['yellow-500']};
-  color: ${(props) => props.theme.white};
-  font-weight: bold;
-
-  padding: 0.75rem;
-
-  border: none;
-  border-radius: 6px;
-
-  cursor: pointer;
+    margin-top: 1.5rem;
+    margin: bottom: 2.5rem;
+  
+    background-color: ${(props) => props.theme['yellow-500']};
+    color: ${(props) => props.theme.white};
+    font-weight: bold;
+  
+    padding: 0.75rem;
+  
+    border: none;
+    border-radius: 6px;
+  
+    cursor: pointer;
+  }
 `
 
 export const ResumeContainerGrid = styled.div`

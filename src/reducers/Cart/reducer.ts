@@ -43,10 +43,13 @@ export function cartReducer(state: CartState, action: any) {
         return cart.coffeeId === action.payload.id
       })
 
+      if (cartItemIndex < 0) {
+        return state
+      }
+
       return produce(state, (draft) => {
-        cartItemIndex >= 0
-          ? (draft.cart[cartItemIndex].quantity = 0)
-          : draft.cart.push(action.payload.cart)
+        draft.cart[cartItemIndex].quantity = 0
+        draft.cart[cartItemIndex].totalPrice = 0
       })
     }
     default:

@@ -5,7 +5,8 @@ import {
   Money,
   Bank,
 } from 'phosphor-react'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import { CartContext } from '../../contexts/CartContext'
 import { CardCoffeSelected } from './components/CardCoffeSelected'
 
@@ -23,14 +24,26 @@ import {
   CardMethodPayment,
   Button,
   CardSelecteds,
-  ButtonConfirm,
   ResumeContainerGrid,
   ResumeTotal,
 } from './styles'
 
 export function Checkout() {
-  const { cart } = useContext(CartContext)
+  const {
+    cart,
+    summaryCart,
+    summaryCartWithDelivery,
+    getSummaryValuesToPayment,
+  } = useContext(CartContext)
   const [paymentMethod, setPaymentMethod] = useState('')
+
+  useEffect(() => {
+    getSummaryValuesToPayment()
+  }, [])
+
+  useEffect(() => {
+    getSummaryValuesToPayment()
+  }, [cart])
 
   return (
     <CheckoutContainer>
@@ -113,14 +126,16 @@ export function Checkout() {
                 quantity={cart.quantity}
               />
             ) : (
-              <></>
+              <div key={cart.coffeeId}></div>
             ),
           )}
 
           <ResumeContainerGrid>
             <div>
               <span>Total de itens</span>
-              <span>R$ 29,70</span>
+              <span>
+                R$ {summaryCart.toFixed(2).toString().replace('.', ',')}
+              </span>
             </div>
             <div>
               <span>Entrega</span>
@@ -128,11 +143,19 @@ export function Checkout() {
             </div>
             <div>
               <ResumeTotal>Total</ResumeTotal>
-              <ResumeTotal>R$ 33,20</ResumeTotal>
+              <ResumeTotal>
+                R${' '}
+                {summaryCartWithDelivery
+                  .toFixed(2)
+                  .toString()
+                  .replace('.', ',')}
+              </ResumeTotal>
             </div>
           </ResumeContainerGrid>
 
-          <ButtonConfirm>CONFIRMAR PEDIDO</ButtonConfirm>
+          <NavLink to="/finished" title="Finished">
+            CONFIRMAR PEDIDO
+          </NavLink>
         </CardSelecteds>
       </div>
     </CheckoutContainer>

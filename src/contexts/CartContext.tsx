@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useEffect, useReducer } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useEffect,
+  useReducer,
+  useState,
+} from 'react'
 import {
   deleteItemToCart,
   updateCart,
@@ -8,6 +14,9 @@ import { CartItem, cartReducer } from '../reducers/Cart/reducer'
 
 interface CartContextType {
   cart: CartItem[]
+  summaryCart: number
+  summaryCartWithDelivery: number
+  getSummaryValuesToPayment: () => void
   addItemToCart: (data: CartItem) => void
   editQuantityInCart: (data: CartItem) => void
   deleteItemCart: (id: number) => void
@@ -20,6 +29,9 @@ interface CartContextProviderProps {
 }
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
+  const [summaryCart, setSummaryCart] = useState(0)
+  const [summaryCartWithDelivery, setSummaryCartWithDelivery] = useState(0)
+
   const [cartState, dispatch] = useReducer(
     cartReducer,
     { cart: [] },
@@ -56,9 +68,27 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(deleteItemToCart(id))
   }
 
+  function getSummaryValuesToPayment() {
+    let summary = 0
+    for (let index = 0; index < cart.length; index++) {
+      summary = summary + cart[index].totalPrice
+    }
+
+    setSummaryCart(summary)
+    setSummaryCartWithDelivery(summary + 3.5)
+  }
+
   return (
     <CartContext.Provider
-      value={{ cart, addItemToCart, editQuantityInCart, deleteItemCart }}
+      value={{
+        cart,
+        summaryCart,
+        summaryCartWithDelivery,
+        getSummaryValuesToPayment,
+        addItemToCart,
+        editQuantityInCart,
+        deleteItemCart,
+      }}
     >
       {children}
     </CartContext.Provider>
